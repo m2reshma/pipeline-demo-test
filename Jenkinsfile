@@ -23,6 +23,8 @@ pipeline {
 
         stage('Run Container') {
             steps {
+                echo " removing old container if exists.."
+                sh 'docker rm -f $CONTAINER_NAME || true'
                 echo "🚀 Running container..."
                 sh 'docker run -d --name $CONTAINER_NAME -p 3000:3000 $IMAGE_NAME'
             }
