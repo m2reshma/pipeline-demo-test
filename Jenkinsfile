@@ -30,6 +30,8 @@ pipeline {
 
         stage('Verify Container') {
             steps {
+                echo " waiting for container to start..."
+                sh 'sleep 5'
                 echo "🔍 Verifying container is running..."
                 sh 'docker ps | grep $CONTAINER_NAME'
                 sh 'curl -s http://localhost:3000'
