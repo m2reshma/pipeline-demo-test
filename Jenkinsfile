@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "jenkins-docker-example"
-        CONTAINER_NAME = "jenkins-docker-container"
+        CONTAINER_NAME = "jenkins-docker-container-${BUILD_NUMBER}"
     }
 
     stages {
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo " removing old container if exists.."
                 sh 'docker rm -f $CONTAINER_NAME || true'
-                echo "🚀 Running container..."
+                echo "🚀 Running new container..."
                 sh 'docker run -d --name $CONTAINER_NAME -p 3000:3000 $IMAGE_NAME'
             }
         }
