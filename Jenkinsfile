@@ -26,7 +26,7 @@ pipeline {
                 echo " removing old container if exists.."
                 sh 'docker rm -f $CONTAINER_NAME || true'
                 echo "🚀 Running new container..."
-                sh 'docker run -d --name $CONTAINER_NAME -p 4000:3000 $IMAGE_NAME'
+                sh 'docker run -d --name $CONTAINER_NAME -p 5000:3000 $IMAGE_NAME'
             }
         }
 
